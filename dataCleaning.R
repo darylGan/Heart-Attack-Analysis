@@ -1,69 +1,93 @@
-library("xlsx")
 
 #set working directory
-setwd("C:/Users/Daryl Gan/Desktop/Heart_Attack_Analysis/dataset")
+setwd("C:/Users/Daryl Gan/Desktop/Heart-Attack-Analysis/dataset")
+
 
 #read the datasets into Rstudio
-data <- read.xlsx("rawDataset.xlsx", sheetIndex = 1, header = TRUE)
+data <- read.csv("rawDataset.csv", header = TRUE)
+
 
 #descriptive analysis
-View(data) #view dataset
+#view dataset
+View(data)
 
-class(data) #check type of class
+#view type of class
+class(data)
 
-dim(data) #check row & column
+#view number of rows & columns
+dim(data)
 
-str(data) #check the structure of the datasets
+#view first 6 rows of data
+head(data)
 
-summary(data) #summarise data
+#summarise data
+summary(data)
+
+#view the structure of the dataset
+str(data)
 
 
-###CLEANING PROCESS
+#convert 0 to 'F' for female and 1 to 'M' for male
+data[data$sex == 0,]$sex <- "F"
+data[data$sex == 1,]$sex <- "M"
+
+#convert 0 to "Healthy" and 1 to "Unhealthy"
+data$output <- ifelse(test = data$output == 0, yes = "Healthy", no = "Unhealthy")
+
 
 #convert data type
-data$age <- as.logical(as.integer(as.character(data$age)))
-data$sex <- as.logical(as.integer(as.character(data$sex)))
-data$cp <- as.logical(as.integer(as.character(data$cp)))
-data$trtbps <- as.logical(as.integer(as.character(data$trtbps)))
-data$chol <- as.logical(as.integer(as.character(data$chol)))
-data$fbs <- as.logical(as.integer(as.character(data$fbs)))
-data$restecg <- as.logical(as.integer(as.character(data$restecg)))
-data$thalachh <- as.logical(as.integer(as.character(data$thalachh)))
-data$exng <- as.logical(as.integer(as.character(data$exng)))
-data$oldpeak <- as.logical(as.integer(as.character(data$oldpeak)))
-data$slp <- as.logical(as.integer(as.character(data$slp)))
-data$caa <- as.logical(as.integer(as.character(data$caa)))
-data$thall <- as.logical(as.integer(as.character(data$thall)))
-data$output <- as.logical(as.integer(as.character(data$output)))
+data$sex <- as.factor(data$sex)
+
+data$cp <- as.factor(data$cp)
+
+data$fbs <- as.factor(data$fbs)
+
+data$restecg <- as.factor(data$restecg)
+
+data$exng <- as.factor(data$exng)
+
+data$slp <- as.factor(data$slp)
+
+data$output <- as.factor(data$output)
+
+
+#check the structure of the dataset again
+str(data)
+
+
+#check number of rows of data that has NA values
+nrow(data[is.na(data),])
+
+nrow(data)
+
+
+#remove rows of data that has NA values
+data <- na.omit(data)
+
+nrow(data)
+
 
 #remove duplicate rows
 data <- unique(data)
 
 
-###REPLACING NA/NULL VALUES
+#check if dataset is imbalanced
+xtabs(~ output + sex, data=data)
 
-#check number of null data before removing
-sum(is.na(data))
+xtabs(~ output + cp, data=data)
 
-#method 1
-#replace all null value with mode by referring to summary()
-summary(data)
+xtabs(~ output + fbs, data=data)
 
-data$age[is.na(data$age)] <- TRUE
-data$cp[is.na(data$cp)] <- TRUE
-data$trtbps[is.na(data$trtbps)] <- TRUE
-data$fbs[is.na(data$fbs)] <- FALSE
-data$thalachh[is.na(data$thalachh)] <- TRUE
-data$slp[is.na(data$slp)] <- TRUE
-data$caa[is.na(data$caa)] <- FALSE
-data$thall[is.na(data$thall)] <- TRUE
+xtabs(~ output + restecg, data=data)
 
-#method 2
-#simply delete column with null value 
-#data <- na.omit(data) 
+xtabs(~ output + exng, data=data)
 
-#check number of null data after removing
-sum(is.na(data))
+xtabs(~ output + slp, data=data)
+
+xtabs(~ output + caa, data=data)
+
+xtabs(~ output + thall, data=data)
+
 
 #descriptive analysis
 str(data)
@@ -72,24 +96,6 @@ dim(data)
 
 summary(data)
 
-#list the name of columns
-colnames(data)
-
-#rename columns
-names(data)[names(data) == "age" ] <- "Age"
-names(data)[names(data) == "sex" ] <- "Gender"
-names(data)[names(data) == "cp" ] <- "Chest Pain Type"
-names(data)[names(data) == "trtbps" ] <- "Resting Blood Pressure"
-names(data)[names(data) == "chol" ] <- "Serum Cholesterol"
-names(data)[names(data) == "fbs" ] <- "Fasting Blood Sugar"
-names(data)[names(data) == "restecg" ] <- "Resting ECG"
-names(data)[names(data) == "thalachh" ] <- "Max Heart Rate"
-names(data)[names(data) == "exng" ] <- "Exercise Induced Angina"
-names(data)[names(data) == "oldpeak" ] <- "ST Depression"
-names(data)[names(data) == "slp" ] <- "Peak Slope"
-names(data)[names(data) == "caa" ] <- "Major Vessels"
-names(data)[names(data) == "thall" ] <- "Thal Rate"
-names(data)[names(data) == "output" ] <- "Target Variable"
 
 #write new dataset (after cleaning) into new csv file
-write.xlsx(data,"cleanedData.xlsx", sheetName = "Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE, showNA = TRUE)
+write.csv(data, "cleanedData.csv")
