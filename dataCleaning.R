@@ -31,24 +31,21 @@ str(data)
 data[data$sex == 0,]$sex <- "F"
 data[data$sex == 1,]$sex <- "M"
 
-#convert 0 to "Healthy" and 1 to "Unhealthy"
-data$output <- ifelse(test = data$output == 0, yes = "Healthy", no = "Unhealthy")
-
 
 #convert data type
 data$sex <- as.factor(data$sex)
 
 data$cp <- as.factor(data$cp)
 
-data$fbs <- as.factor(data$fbs)
+data$fbs <- as.logical(data$fbs)
 
 data$restecg <- as.factor(data$restecg)
 
-data$exng <- as.factor(data$exng)
+data$exng <- as.logical(data$exng)
 
 data$slp <- as.factor(data$slp)
 
-data$output <- as.factor(data$output)
+data$output <- as.logical(data$output)
 
 
 #check the structure of the dataset again
@@ -70,6 +67,8 @@ nrow(data)
 #remove duplicate rows
 data <- unique(data)
 
+nrow(data)
+
 
 #check if dataset is imbalanced
 xtabs(~ output + sex, data=data)
@@ -90,9 +89,9 @@ xtabs(~ output + thall, data=data)
 
 
 #descriptive analysis
-str(data)
-
 dim(data)
+
+str(data)
 
 summary(data)
 

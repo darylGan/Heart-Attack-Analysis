@@ -20,8 +20,8 @@
 
 11. slp - the slope of the peak exercise ST segment (2 = upsloping; 1 = flat; 0 = downsloping)
 
-12. caa - number of major vessels (0-3) colored by flourosopy (4 = null)*********
+12. caa - number of major vessels (0-3) colored by flourosopy
 
-13. thall - 1 = fixed defect; 2 = normal; 3 = reversable defect; 0 = null********
+13. thall - 1 = fixed defect; 2 = normal; 3 = reversable defect
 
 14. output - the predicted attribute - diagnosis of heart disease (angiographic disease status) (Value 0 = < diameter narrowing; Value 1 = > 50% diameter narrowing)
