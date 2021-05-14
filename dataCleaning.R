@@ -81,33 +81,32 @@ names(data)[names(data) == "output"] <- "hd"
 
 
 #check if dataset is imbalanced
-xtabs(~ output + sex, data=data)
+xtabs(~ hd + sex, data=data)
 
-xtabs(~ output + cp, data=data)
+xtabs(~ hd + cp, data=data)
 
-xtabs(~ output + fbs, data=data)
+xtabs(~ hd + fbs, data=data)
 
-xtabs(~ output + restecg, data=data)
+xtabs(~ hd + restecg, data=data)
 
-xtabs(~ output + exng, data=data)
+xtabs(~ hd + exng, data=data)
 
-xtabs(~ output + slp, data=data)
+xtabs(~ hd + slp, data=data)
 
-xtabs(~ output + caa, data=data)
+xtabs(~ hd + caa, data=data)
 
-xtabs(~ output + thall, data=data)
+xtabs(~ hd + thall, data=data)
 
 
 #descriptive analysis
+View(data)
+
 dim(data)
 
-str(data)
-
 summary(data)
+
+str(data)
 
 
 #write new dataset (after cleaning) into new csv file
 write.csv(data, "cleanedData.csv")
-
-View(data)
-
