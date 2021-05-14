@@ -70,6 +70,16 @@ data <- unique(data)
 nrow(data)
 
 
+#remove rows with caa = 4
+data <- data[!(data$caa == 4),]
+
+nrow(data)
+
+
+#rename column name
+names(data)[names(data) == "output"] <- "hd"
+
+
 #check if dataset is imbalanced
 xtabs(~ output + sex, data=data)
 
@@ -98,3 +108,6 @@ summary(data)
 
 #write new dataset (after cleaning) into new csv file
 write.csv(data, "cleanedData.csv")
+
+View(data)
+
