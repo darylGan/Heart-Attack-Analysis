@@ -109,4 +109,4 @@ str(data)
 
 
 #write new dataset (after cleaning) into new csv file
-write.csv(data, "cleanedData.csv")
+write.csv(data, "cleanedData.csv", row.names=FALSE)
