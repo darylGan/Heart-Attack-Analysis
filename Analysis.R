@@ -27,7 +27,7 @@ logistic_model <- glm(hd ~ cp+thalachh+slp+exng+oldpeak+caa+trtbps+chol+fbs,data
 summary(logistic_model)
 
 #Discard some less significant variables
-logistic_model <- glm(hd ~ cp+exng+oldpeak+caa+trtbps,data=train_set,family="binomial",)
+logistic_model <- glm(hd ~ cp+exng+oldpeak+caa,data=train_set,family="binomial",)
 summary(logistic_model)
 
 #Train the model using training data set
