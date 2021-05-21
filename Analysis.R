@@ -17,7 +17,7 @@ str(data)
 
 
 #Split data into training set and testing set
-set.seed(10) 
+set.seed(3) 
 split_index <- sample(2,nrow(data),replace = T , prob = c(0.8,0.2))
 train_set <- data[split_index == 1,]
 test_set <- data[split_index == 2,]
@@ -26,9 +26,11 @@ test_set <- data[split_index == 2,]
 logistic_model <- glm(hd ~ cp+thalachh+slp+exng+oldpeak+caa+trtbps+chol+fbs,data=train_set,family="binomial",)
 summary(logistic_model)
 
-#Discard some less significant variables
+#Discard some less statistically significant variables
+#logistic_model <- glm(hd ~ cp+oldpeak+caa+trtbps,data=train_set,family="binomial",)
 logistic_model <- glm(hd ~ cp+exng+oldpeak+caa,data=train_set,family="binomial",)
 summary(logistic_model)
+
 
 #Train the model using training data set
 train_predict <- predict(logistic_model, train_set, type = 'response')
@@ -46,5 +48,3 @@ print(train_matrix)
 print(train_accuracy)
 print(test_matrix)
 print(test_accuracy)
-
-      
