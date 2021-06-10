@@ -50,7 +50,7 @@ ggplot(data, aes(oldpeak, colour = hd, fill = hd)) +
 #caa
 a<- xtabs(~ hd + caa, data=data)
 barplot(t(a),beside=T,ylim=c(0,150),xlab="Heart Disease",ylab="Frequency",col=rainbow(4),axis.lty="solid")
-legend("topleft",rownames(t(a)),cex =0.8,fill=rainbow(4),title="Number of Major Vessels coloured by Flourosopy")
+legend("topleft",rownames(t(a)),cex =0.8,fill=rainbow(4),title="Number of Major Vessels coloured by Flouroscopy")
 
 
 #Train the model using training data set
