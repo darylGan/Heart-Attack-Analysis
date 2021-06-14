@@ -1,0 +1,89 @@
+Listen to Your Heart
+========================================================
+class: title-slide
+author: WIE2003 Group 10
+date: 16th June 2021
+autosize: true
+transition: rotate
+Group Members:
+<small>
+- Daryl Gan En-Wei (U2005414/1)
+- Ng Jun Jing (U2005387/1)
+- Tan Yi Yung (U2005295/1)
+- Theeveeyan Raj (U2005320/1)
+
+</small>
+
+Introduction
+========================================================
+
+**Coronary Heart Disease** has been the **top cause of death** in Malaysia for some time. We wish to develop an application that can predict the likelihood of a person to suffer from heart disease, using some indicators of it. Thus, people can detect heart diseases earlier to get immediate treatment. That is the reason we made the **'Listen to your Heart'** app, we hope it will benefit our stakeholders: **the general public**.
+
+Questions:
+
+- What are the indicators of having heart disease? 
+- Can we predict heart disease with those indicators?
+
+
+Data Set
+========================================================
+title: false
+left: 50%
+autosize: true
+Dataset Description
+
+<small>
+We found our data set from the UCI Machine Learning Repository.
+The data set was a combination of 4 datasets concerning heart disease diagnosis, and only 14 out of 76 features were used.
+All the attributes are numeric-valued and the data was collected from few different sources.
+
+To know the details, you can click this [**LINK**](http://archive.ics.uci.edu/ml/datasets/Heart+Disease).
+
+</small>
+***
+
+Data Cleaning
+
+<small>
+We cleaned the data by removing unwanted rows and fixing the type of the variables. The cleaned dataset contained 292 unique observations with 14 features.
+</small>
+
+<br></br>
+Data Analysis
+
+<small>
+We selected 4 most statistical significant features from the 14 features to train our logistic regression model to predict the likelihood of having heart disease.
+</small>
+
+Screenshot of the App
+========================================================
+
+<small>
+Link to app: <https://me-lolz1024.shinyapps.io/Listen_to_Your_Heart/>
+</small>
+<style>
+.midcenter {
+    position: fixed;
+    top: 61%;
+    left: 45%;
+}
+</style>
+<div class="midcenter" style="margin-left:-300px; margin-top:-300px;">
+<img src="https://raw.githubusercontent.com/darylGan/Listen-to-your-Heart/main/app%20ss/ss%20combine%20cropped.png" width=900 height=550 ></img>
+</div>
+
+
+Summary
+========================================================
+
+The overall experience in completing this Data Science project was fresh and fun. However, since it was our first time doing a project like this, we faced some problems such as, we were confused of the method of presentation so we had to redo our slides and pitch presentation. Overall, we planned the project quite well so we managed to finish most of the tasks on time. 
+
+<small>
+Here is the link to our project on Github:
+
+<https://github.com/darylGan/Listen-to-your-Heart>
+
+</small>
+
+
+
